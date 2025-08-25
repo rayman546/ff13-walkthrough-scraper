@@ -1,6 +1,12 @@
-# Final Fantasy XIII Walkthrough Scraper
+# Final Fantasy XIII Walkthrough Scraper (Fixed Version)
 
-This Python script scrapes the Final Fantasy XIII 100% walkthrough from GameFAQs and converts it to a markdown file.
+This is an improved version of the Python script that scrapes the Final Fantasy XIII 100% walkthrough from GameFAQs and converts it to a markdown file.
+
+## Fixes Made
+
+1. **Corrected Regex Patterns**: Fixed incorrectly escaped regex patterns in the parsing function
+2. **Improved Content Parsing**: Enhanced the parsing logic to better handle the structure of the walkthrough
+3. **Better Error Handling**: Maintained proper error handling while fixing the core issues
 
 ## Requirements
 
@@ -35,6 +41,11 @@ The output file (`ffxiii_walkthrough.md`) contains:
 - Post-game content
 - Trophy information
 - Enemy intel and farming guides
+
+## Branches
+
+- `master`: Original version of the scraper
+- `fix-scraper-issues`: Fixed version with improved parsing and regex patterns
 
 ## Notes
 

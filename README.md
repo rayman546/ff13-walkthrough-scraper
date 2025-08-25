@@ -1,84 +1,75 @@
-# Final Fantasy XIII Walkthrough Scraper (RAG Pipeline Version)
+# Final Fantasy XIII Walkthrough Scraper
 
-This directory contains tools for scraping and processing the Final Fantasy XIII walkthrough for use in a Retrieval Augmented Generation (RAG) pipeline.
+This repository contains a Python scraper for the Final Fantasy XIII 100% walkthrough from GameFAQs, with multiple versions showing different approaches and improvements.
 
 ## Branches
 
-- `master`: Original version of the scraper
-- `fix-scraper-issues`: Fixed version with improved parsing and regex patterns
-- `context7-analysis`: Improved scraper with best practices from context7 analysis
-- `rag-embedding-optimization`: Current branch - Optimized for RAG pipeline usage
+### `master`
+The original version of the FF13 walkthrough scraper.
 
-## RAG Pipeline Tools
+### `fix-scraper-issues`
+Fixed version with corrected regex patterns and improved content parsing.
 
-### ffxiii_rag_processor.py
+### `context7-analysis`
+Improved scraper incorporating best practices from analyzing the requests and BeautifulSoup libraries:
+- Better error handling with proper exception types
+- Session management with connection pooling
+- Retry strategy with exponential backoff
+- Modular design with object-oriented approach
+- Type hints for better documentation
+- Comprehensive logging
 
-This script processes the FF13 walkthrough markdown file and prepares it for use in a RAG pipeline:
-
-1. **Semantic Chunking**: Respects the document structure while creating appropriately sized chunks
-2. **Metadata Extraction**: Extracts section and subsection information for each chunk
-3. **JSONL Output**: Saves chunks in JSONL format for easy ingestion into vector databases
-4. **Statistics Generation**: Provides processing statistics for quality assurance
+### `rag-embedding-optimization` (default branch)
+Optimized for Retrieval Augmented Generation (RAG) pipeline usage:
+- Semantic chunking of the document
+- Metadata extraction for each chunk
+- JSONL output format for vector database ingestion
+- Context-aware embedding preparation
+- Processing statistics
 
 ## Features
 
-- Configurable chunk size and overlap
-- Context-aware chunking that respects document structure
-- Rich metadata extraction (section, subsection, titles)
-- JSONL output format for vector database ingestion
-- Processing statistics for quality assurance
-
-## Usage
-
-Run the RAG processor:
-```
-python ffxiii_rag_processor.py
-```
-
-The script will:
-1. Read the `ffxiii_walkthrough.md` file
-2. Process it into semantic chunks
-3. Extract metadata for each chunk
-4. Save the results to `rag_output/ffxiii_walkthrough_rag.jsonl`
-5. Generate processing statistics in `rag_output/processing_stats.json`
-
-## Output Format
-
-Each line in the output JSONL file contains a chunk with the following structure:
-
-```json
-{
-  "id": "ff13_chunk_0001",
-  "content": "Chunk content...",
-  "metadata": {
-    "section": "A",
-    "subsection": "A1",
-    "section_title": "GENERAL INFORMATION",
-    "subsection_title": "DISCLAIMERS",
-    "chunk_index": 1
-  },
-  "embedding_text": "Section A | GENERAL INFORMATION | Subsection A1 | DISCLAIMERS\n\nChunk content...",
-  "timestamp": "2025-08-25T00:00:00"
-}
-```
+- Scrapes the complete FF13 walkthrough from GameFAQs
+- Converts content to structured markdown
+- Processes content for RAG pipeline usage
+- Extracts metadata for filtering and relevance scoring
+- Outputs data in formats suitable for vector databases
 
 ## Requirements
 
 - Python 3.9+
-- No additional dependencies beyond the base scraper requirements
+- requests
+- beautifulsoup4
+- urllib3
 
-## Integration with Vector Databases
+## Installation
 
-The output JSONL file can be easily ingested into popular vector databases:
+```bash
+pip install -r requirements.txt
+```
 
-- **Pinecone**: Use the Pinecone Python client to upsert records
-- **Weaviate**: Use the Weaviate Python client to batch import
-- **Chroma**: Use Chroma's `add` method with the JSONL data
-- **FAISS**: Convert the JSONL to the appropriate format for FAISS indexing
+## Usage
 
-## Customization
+Depending on which branch you're using:
 
-You can customize the chunking behavior by modifying the constants in the script:
+```bash
+# Original scraper
+python ffxiii_walkthrough_scraper.py
 
-- `CHUNK_SIZE`: Target size for text chunks (default: 1000 characters)
-- `CHUNK_OVERLAP`: Overlap between consecutive chunks (default: 200 characters)
+# Improved scraper with best practices
+python ffxiii_walkthrough_scraper_improved.py
+
+# RAG processor
+python ffxiii_rag_processor.py
+```
+
+## Output
+
+The scrapers generate:
+- `ffxiii_walkthrough.md` - Complete walkthrough in markdown format
+- `rag_output/ffxiii_walkthrough_rag.jsonl` - Chunks prepared for RAG pipeline
+- `rag_output/processing_stats.json` - Statistics about the chunking process
+
+## License
+
+This project is for educational purposes only. The scraped content is copyrighted by their respective owners.

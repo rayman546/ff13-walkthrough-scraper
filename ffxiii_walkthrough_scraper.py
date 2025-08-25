@@ -94,7 +94,7 @@ def parse_walkthrough_content(content):
             continue
             
         # Check for subsections (B1, B2, etc.)
-        subsection_match = re.match(r'^([A-Z]\\d+):?\s*(.*)$', line)
+        subsection_match = re.match(r'^([A-Z]\d+):?\s*(.*)$', line)
         if subsection_match and in_section:
             subsection_id = subsection_match.group(1)
             subsection_title = subsection_match.group(2).strip()
@@ -102,7 +102,7 @@ def parse_walkthrough_content(content):
             continue
             
         # Check for numbered items (1., 2., 3., etc.)
-        numbered_match = re.match(r'^(\\d+)\\.\\s+(.*)$', line)
+        numbered_match = re.match(r'^(\d+)\.\s+(.*)$', line)
         if numbered_match:
             number = numbered_match.group(1)
             text = numbered_match.group(2).strip()
@@ -110,7 +110,7 @@ def parse_walkthrough_content(content):
             continue
             
         # Check for bullet points
-        bullet_match = re.match(r'^[*\\-]\\s+(.*)$', line)
+        bullet_match = re.match(r'^[*\-]\s+(.*)$', line)
         if bullet_match:
             text = bullet_match.group(1).strip()
             markdown.append(f"- {text}\n")

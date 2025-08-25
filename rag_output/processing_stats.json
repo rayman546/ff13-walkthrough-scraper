@@ -1,0 +1,16 @@
+{
+  "total_chunks": 654,
+  "avg_content_length": 963.7874617737003,
+  "min_content_length": 899,
+  "max_content_length": 999,
+  "avg_embedding_length": 1071.9633027522937,
+  "min_embedding_length": 926,
+  "max_embedding_length": 1113,
+  "sections": [
+    "H",
+    "B",
+    "F",
+    "C"
+  ],
+  "processing_timestamp": "2025-08-25T01:01:28.688189"
+}

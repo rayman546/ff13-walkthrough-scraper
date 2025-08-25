@@ -1,18 +1,26 @@
-# Final Fantasy XIII Walkthrough Scraper (Fixed Version)
+# Final Fantasy XIII Walkthrough Scraper (Context7 Improved Version)
 
-This is an improved version of the Python script that scrapes the Final Fantasy XIII 100% walkthrough from GameFAQs and converts it to a markdown file.
+This Python script scrapes the Final Fantasy XIII 100% walkthrough from GameFAQs and converts it to a markdown file.
 
-## Fixes Made
+## Improvements from Context7 Analysis
 
-1. **Corrected Regex Patterns**: Fixed incorrectly escaped regex patterns in the parsing function
-2. **Improved Content Parsing**: Enhanced the parsing logic to better handle the structure of the walkthrough
-3. **Better Error Handling**: Maintained proper error handling while fixing the core issues
+This version incorporates best practices from analyzing the requests and BeautifulSoup libraries:
+
+1. **Better Error Handling**: Proper exception handling with specific error types
+2. **Session Management**: Uses requests Session with connection pooling for better performance
+3. **Retry Strategy**: Implements exponential backoff for failed requests
+4. **Modular Design**: Object-oriented approach with clear separation of concerns
+5. **Type Hints**: Added type annotations for better code documentation
+6. **Logging**: Comprehensive logging instead of print statements
+7. **Configuration**: Easily configurable headers and timeouts
+8. **Resource Management**: Proper file handling with context managers
 
 ## Requirements
 
-- Python 3.x
+- Python 3.9+
 - requests
 - beautifulsoup4
+- urllib3
 
 ## Installation
 
@@ -23,15 +31,22 @@ This is an improved version of the Python script that scrapes the Final Fantasy 
 
 ## Usage
 
-Run the script:
+Run the improved script:
 ```
-python ffxiii_walkthrough_scraper.py
+python ffxiii_walkthrough_scraper_improved.py
 ```
 
 The script will:
 1. Fetch the walkthrough from GameFAQs
 2. Parse the content into structured sections
 3. Save the result as `ffxiii_walkthrough.md`
+
+## Files
+
+- `ffxiii_walkthrough_scraper_improved.py`: Main scraper script with improvements
+- `ffxiii_walkthrough_scraper.py`: Original scraper script
+- `requirements.txt`: Python dependencies
+- `README.md`: This file
 
 ## Output
 
@@ -41,11 +56,6 @@ The output file (`ffxiii_walkthrough.md`) contains:
 - Post-game content
 - Trophy information
 - Enemy intel and farming guides
-
-## Branches
-
-- `master`: Original version of the scraper
-- `fix-scraper-issues`: Fixed version with improved parsing and regex patterns
 
 ## Notes
 

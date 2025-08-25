@@ -1,0 +1,6 @@
+@echo off
+echo Starting Final Fantasy XIII Walkthrough Scraper...
+python ffxiii_walkthrough_scraper.py
+echo.
+echo Press any key to exit...
+pause >nul
